@@ -1370,7 +1370,15 @@ export class DataTable {
                         {this.isObject(cell) &&
                         columnProps?.dataType !== "date" ? (
                           Object.keys(cell).includes("href") ? (
-                            <ic-link href={cellValue("href")}>
+                            <ic-link
+                              href={cellValue("href")}
+                              target={cellValue("target") || undefined}
+                              rel={
+                                cellValue("target") === "_blank"
+                                  ? "noopener noreferrer"
+                                  : undefined
+                              }
+                            >
                               {cellValue("data")}
                             </ic-link>
                           ) : (
